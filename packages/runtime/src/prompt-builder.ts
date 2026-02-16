@@ -29,16 +29,27 @@ You do NOT have the full instructions for every skill loaded.
 If you need to use a skill and are unsure how, use the skill.load tool
 to read its SKILL.md instructions first.
 
+# Instructions
+${config.systemPrompt || "You are a helpful assistant."}
+
 # Native Tools
 You have access to:
 - fs.read(path) — read a file
-- fs.write(path, content) — write a file
+- fs.write(path, content) — write a file (or overwrite)
 - fs.list(path) — list directory contents
-- shell.exec(command) — execute a shell command
+- fs.list(path) — list directory contents
+- pdf.read(path, [pageRange]) — read a PDF file and extract text
+
+# Tool Protocol
+To use a tool, you MUST use this exact format on a new line:
+TOOL: tool_name {"arg": "value"}
+
+Example:
+TOOL: fs.read {"path": "data.txt"}
 
 # Loop Protocol
 1. Think about the user's request.
-2. If you need more information or need to act, use a tool.
+2. If you need more information, call a tool using the format above.
 3. If you have the answer, reply to the user.
 4. Never loop indefinitely.
 `;

@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "build": "pnpm -r build",
-    "test": "pnpm -r test"
+    "test": "pnpm -r test",
+    "start:bot": "cd apps/telegram-bot && pnpm start"
   },
   "devDependencies": {
     "@types/node": "^25.2.3",

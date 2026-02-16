@@ -107,15 +107,23 @@ export class AgentLoop {
     this.bus.subscribe(
       { topics: ["agent.turn"], targetAgentId: this.config.id },
       async (event: AegisEvent) => {
-        const payload = event.payload as {
-          message: string;
-          sessionId?: string;
-        };
-        await this.handleTurn(
-          payload.message,
-          event.traceCtx,
-          payload.sessionId as SessionId | undefined
-        );
+        try {
+          const payload = event.payload as {
+            message: string;
+            sessionId?: string;
+          };
+          await this.handleTurn(
+            payload.message,
+            event.traceCtx,
+            payload.sessionId as SessionId | undefined
+          );
+        } catch (err) {
+          console.error(`[AgentLoop] Error in handleTurn:`, err);
+          // Publish error event so callers aren't left hanging
+          await this.bus.publish(
+            this.createEvent("agent.error", { error: String(err) }, event.traceCtx)
+          );
+        }
       }
     );
 

@@ -4,18 +4,20 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "tsx src/index.ts",
-    "dev": "tsx watch src/index.ts"
+    "start": "tsx --env-file=.env src/index.ts",
+    "dev": "tsx --env-file=.env watch src/index.ts"
   },
   "dependencies": {
     "@aegis/core": "workspace:*",
+    "@aegis/persistence": "workspace:*",
     "@aegis/runtime": "workspace:*",
     "@aegis/skills": "workspace:*",
-    "@aegis/persistence": "workspace:*",
     "@aegis/types": "workspace:*",
+    "pdf-parse": "^2.4.5",
     "telegraf": "^4.16.3"
   },
   "devDependencies": {
+    "@types/pdf-parse": "^1.1.5",
     "tsx": "^4.20.3",
     "typescript": "^5.9.3"
   }
