@@ -1,0 +1,22 @@
+{
+  "name": "@aegis/telegram-bot",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@aegis/core": "workspace:*",
+    "@aegis/runtime": "workspace:*",
+    "@aegis/skills": "workspace:*",
+    "@aegis/persistence": "workspace:*",
+    "@aegis/types": "workspace:*",
+    "telegraf": "^4.16.3"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.3"
+  }
+}

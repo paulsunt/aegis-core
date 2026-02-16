@@ -17,6 +17,13 @@ pnpm-debug.log*
 .DS_Store
 Thumbs.db
 
+# Environment (API keys!)
+.env
+.env.local
+
+# Bot data
+apps/telegram-bot/data/
+
 # IDE
 .vscode/
 .idea/
